@@ -62,8 +62,13 @@ public final class FirstPlugin extends JavaPlugin{
 		}
 		if(cmd.getName().equalsIgnoreCase("rateserver")){
 			if(args.length == 0){
-				sender.sendMessage(ChatColor.RED + "" + "Usage: /rateserver <comment>");
+				sender.sendMessage(ChatColor.RED + "Not Enough Arguments!");
+				sender.sendMessage(ChatColor.RED  + "Usage: /rateserver <comment>");
 				return true;
+			}
+			else if(args.length >1){
+				sender.sendMessage(ChatColor.RED + "Too many arguments");
+				sender.sendMessage(ChatColor.RED + "Usage: /rateserver <comment>");
 			}
 			String rating = args[0];
 				for (Player p : Bukkit.getOnlinePlayers()) {
