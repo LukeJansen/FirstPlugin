@@ -1,4 +1,4 @@
-package me.EnderVizion.FirstPlugi;
+package me.EnderVizion.FirstPlugin;
 
 import java.util.logging.Logger;
 
