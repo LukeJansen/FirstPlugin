@@ -69,7 +69,9 @@ public final class FirstPlugin extends JavaPlugin{
 			else if(args.length >1){
 				sender.sendMessage(ChatColor.RED + "Too many arguments");
 				sender.sendMessage(ChatColor.RED + "Usage: /rateserver <comment>");
+				return true;
 			}
+			else{
 			String rating = args[0];
 				for (Player p : Bukkit.getOnlinePlayers()) {
 					if(p.isOp()){
@@ -77,7 +79,7 @@ public final class FirstPlugin extends JavaPlugin{
 						p.sendMessage(ChatColor.GREEN + "Maybe send " + sender.getName() + " 3 diamond?");
 						return true;
 					}
-
+				}
 			}
 		}
 		return false;
