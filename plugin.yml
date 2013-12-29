@@ -1,6 +1,6 @@
 name: FirstPlugin
-main: me.EnderVizion.FirstPlugi.FirstPlugin
-version: 1.0.1
+main: me.EnderVizion.FirstPlugin.FirstPlugin
+version: 1.0.3b
 commands:
    website:
       description: Display the website link.
