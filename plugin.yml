@@ -1,0 +1,16 @@
+name: FirstPlugin
+main: me.EnderVizion.FirstPlugi.FirstPlugin
+version: 0.1
+commands:
+   website:
+      description: Display the website link.
+      usage: /<command>
+   stafflist:
+      description: Display the list of staff.
+      usage: /<command>
+   helpme:
+      description: Self Explanatory 
+      usage: /<command>
+   rateserver:
+      description: Rate the server in one word and maybe get some diamonds!
+      usage: /<command> <comment>
