@@ -2,9 +2,12 @@ package me.EnderVizion.FirstPlugin;
 
 import java.util.logging.Logger;
 
+import me.confuser.barapi.BarAPI;
+
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
+import org.bukkit.Sound;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
@@ -55,31 +58,37 @@ public final class FirstPlugin extends JavaPlugin{
 			String zpos = "Z:" + Math.round(location.getZ()) + " ";
 			for (Player p : Bukkit.getOnlinePlayers()) {
 			    if (p.isOp()) {
-			         p.sendMessage(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "XXX" +ChatColor.RED + "" +  playersender.getDisplayName() + " has asked for help at " + xpos + ypos + zpos + ChatColor.DARK_RED + "" + ChatColor.MAGIC + "XXX") ;
+			    	p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
+			    	p.sendMessage(ChatColor.DARK_RED + "" + ChatColor.MAGIC + "XXX" +ChatColor.RED + "" +  playersender.getDisplayName() + " has asked for help at " + xpos + ypos + zpos + ChatColor.DARK_RED + "" + ChatColor.MAGIC + "XXX") ;
+			    	sender.sendMessage(ChatColor.GREEN + "" + p.getName() + " has been sent your request! " + p.getName() + " should be with you soon!");
 			    }
 			}
 			return true;
 		}
 		if(cmd.getName().equalsIgnoreCase("rateserver")){
-			if(args.length == 0){
-				sender.sendMessage(ChatColor.RED + "Not Enough Arguments!");
-				sender.sendMessage(ChatColor.RED  + "Usage: /rateserver <comment>");
-				return true;
-			}
-			else if(args.length >1){
-				sender.sendMessage(ChatColor.RED + "Too many arguments");
+			if (args.length == 1){
+				String rating = args[0];
+					for (Player p : Bukkit.getOnlinePlayers()) {
+						if(p.isOp()){
+							p.sendMessage(ChatColor.GREEN + sender.getName() + " has rated the server " + rating);
+							p.sendMessage(ChatColor.GREEN + "Maybe send " + sender.getName() + " 3 diamond?");
+							return true;
+						}
+					}
+				}
+			else{
+				sender.sendMessage(ChatColor.RED + "Incorrect Number of Arguments!");
 				sender.sendMessage(ChatColor.RED + "Usage: /rateserver <comment>");
 				return true;
 			}
-			else{
-			String rating = args[0];
-				for (Player p : Bukkit.getOnlinePlayers()) {
-					if(p.isOp()){
-						p.sendMessage(ChatColor.GREEN + sender.getName() + " has rated the server " + rating);
-						p.sendMessage(ChatColor.GREEN + "Maybe send " + sender.getName() + " 3 diamond?");
-						return true;
-					}
-				}
+			
+		}
+		if(cmd.getName().equalsIgnoreCase("dropcountdown")){
+			for (Player p : Bukkit.getOnlinePlayers()){
+				p.playSound(p.getLocation(), Sound.ENDERDRAGON_GROWL, 10, 1);
+				p.sendMessage(ChatColor.GOLD + "DROPPARTY COUNTDOWN HAS STARTED!");
+				BarAPI.setMessage(p, "DropParty Countdown!", 60);
+				return true;
 			}
 		}
 		return false;

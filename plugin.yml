@@ -14,3 +14,6 @@ commands:
    rateserver:
       description: Rate the server in one word and maybe get some diamonds!
       usage: /<command> <comment>
+   dropcountdown:
+      description: Start the Drop Party countdown!
+      usage: /<command>
